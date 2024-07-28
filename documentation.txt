@@ -1,0 +1,80 @@
+Voting Application
+
+What ?
+A functionality where user can give vote to the given set of candidates.
+
+
+Models ?
+Routes ?
+
+- Voting app functionality
+1. User can sign in / sign up ✅
+2. User can see the list of candidates ✅
+3. Vote one of the candidates ✅
+4. There is a route which shows the list of candidates and their live vote counts sorted by their vote count ✅
+5. User data must contain their one unique government id proof named : aadhar card number ✅
+6. There should be one admin who can only maintain the table of candidates and he can't able to vote at all ✅
+7. User can change their password  ✅
+8. User can login only with aadhar card number and password; ✅
+9. Admin can't vote at all ✅
+
+- Extra functionality
+10. Two-Factor Authentication (2FA): Enhance security by requiring users to verify their identity using a second factor, such as a one-time code sent to their email or phone. ✅
+11. Election Results: Created a route for accessing election results, allowing users to view result. ✅
+12. Voter Verification: Implement a system to verify the authenticity of users' Aadhar card numbers, ensuring that only eligible voters can participate. ✅
+13. Voting History: Allow users to view their voting history, showing the elections they've participated in and their voting preferences (without revealing specific votes to maintain anonymity). ✅
+14. Notifications: Notify users about important events, such as the start of the voting period, candidate updates, or when the voting results are announced. ✅
+15. User Feedback and Reporting: Allow users to provide feedback or report issues related to the voting process or the application itself. ✅
+16. Real-Time Voting Statistics: Offer real-time statistics, such as voter turnout or the number of votes cast in specific regions. ✅
+
+
+
+- File Structure
+voting-app/
+│
+├── config/
+│   ├── db.js    
+│   ├── jwt.js
+│
+├── controllers/
+│   ├── authController.js
+│   ├── userController.js
+│   ├── candidateController.js
+│   ├── voteController.js
+│   ├── notificationController.js
+│   ├── feedbackController.js
+│
+├── middlewares/
+│   ├── authMiddleware.js
+│   ├── adminMiddleware.js
+│   ├── validationMiddleware.js
+│
+├── models/
+│   ├── User.js
+│   ├── Candidate.js
+│   ├── Vote.js
+│   ├── Feedback.js
+│   ├── Notification.js
+│
+├── routes/
+│   ├── authRoutes.js
+│   ├── userRoutes.js
+│   ├── candidateRoutes.js
+│   ├── voteRoutes.js
+│   ├── notificationRoutes.js
+│   ├── feedbackRoutes.js
+│
+├── utils/
+│   ├── emailService.js
+│   ├── otpService.js
+│
+├── app.js
+├── server.js
+├── .env
+├── package.json
+
+
+
+
+
+
