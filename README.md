@@ -128,11 +128,11 @@ Our Voting Application is a robust and secure platform designed to facilitate fa
     ```json
     [
         {
-            "_id": "",
-            "name": "",
-            "party": "",
-            "manifesto": "",
-            "voteCount": 0,
+            "_id": "60d21b4667d0d8992e610c85",
+            "name": "David Kim",
+            "party": "Innovation Party",
+            "manifesto": "Pushing for technological advancement, innovation in public services, and modern infrastructure.",
+            "voteCount": 1200,
             "__v": 0
         }
     ]
@@ -166,11 +166,116 @@ Our Voting Application is a robust and secure platform designed to facilitate fa
 - **Request Body**:
     ```json
     {
-        "name": "Election Name",
+        "name": "General Election 2024",
         "startDate": "2024-08-01T00:00:00Z",
         "endDate": "2024-08-15T23:59:59Z",
         "isActive": true
     }
     ```
 - **Responses**:
-    - `200 OK`: Election created successfully.
+    - `201 Created`: Election created successfully.
+
+#### Get Elections
+- **Endpoint**: `GET /api/elections`
+- **Description**: Retrieves a list of all elections.
+- **Response**:
+    ```json
+    [
+        {
+            "_id": "60d21b4667d0d8992e610c87",
+            "name": "General Election 2024",
+            "startDate": "2024-08-01T00:00:00Z",
+            "endDate": "2024-08-15T23:59:59Z",
+            "isActive": true,
+            "__v": 0
+        }
+    ]
+    ```
+
+#### Update Election
+- **Endpoint**: `PUT /api/elections/:id`
+- **Description**: Updates the details of a specific election.
+- **Request Body**:
+    ```json
+    {
+        "name": "Presidential Election 2024",
+        "startDate": "2024-09-01T00:00:00Z",
+        "endDate": "2024-09-15T23:59:59Z",
+        "isActive": false
+    }
+    ```
+- **Responses**:
+    - `200 OK`: Election details updated successfully.
+
+#### Delete Election
+- **Endpoint**: `DELETE /api/elections/:id`
+- **Description**: Deletes a specific election.
+- **Responses**:
+    - `200 OK`: Election deleted successfully.
+
+### Voting
+
+#### Cast Vote
+- **Endpoint**: `POST /api/vote`
+- **Description**: Allows a user to cast their vote for a specific candidate.
+- **Request Body**:
+    ```json
+    {
+        "candidateId": "60d21b4667d0d8992e610c85"
+    }
+    ```
+- **Responses**:
+    - `200 OK`: Vote cast successfully.
+    - `400 Bad Request`: Invalid candidate ID or user not authorized.
+    - `500 Internal Server Error`: Error in casting vote.
+
+#### Get Vote Count
+- **Endpoint**: `GET /api/vote/count/:candidateId`
+- **Description**: Retrieves the current vote count for a specific candidate.
+- **Response**:
+    ```json
+    {
+        "candidateId": "60d21b4667d0d8992e610c85",
+        "voteCount": 1200
+    }
+    ```
+
+### Feedback
+
+#### Submit Feedback
+- **Endpoint**: `POST /api/feedback`
+- **Description**: Allows users to submit feedback or report issues.
+- **Request Body**:
+    ```json
+    {
+        "userId": "60d21b4667d0d8992e610c84",
+        "feedback": "The voting process was smooth, but I experienced a minor delay."
+    }
+    ```
+- **Responses**:
+    - `201 Created`: Feedback submitted successfully.
+    - `400 Bad Request`: Invalid feedback format.
+
+#### Get Feedback
+- **Endpoint**: `GET /api/feedback`
+- **Description**: Retrieves a list of all feedback submissions.
+- **Response**:
+    ```json
+    [
+        {
+            "_id": "60d21b4667d0d8992e610c89",
+            "userId": "60d21b4667d0d8992e610c84",
+            "feedback": "The voting process was smooth, but I experienced a minor delay.",
+            "__v": 0
+        }
+    ]
+    ```
+
+## Contributing
+
+We welcome contributions to improve the application. Please fork the repository and submit a pull request with your changes. For any questions or issues, feel free to contact us at [support@example.com](mailto:support@example.com).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
